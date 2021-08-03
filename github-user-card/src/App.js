@@ -71,7 +71,10 @@ class App extends Component {
           formValue={this.state.formValue}
           handleChangeUser={this.handleChangeUser}
           handleChangeForm={this.handleChangeForm} />
-        <FollowerList followerArr={this.state.followerArr} />
+        <FollowerList
+          followerArr={this.state.followerArr}
+          name={this.state.userObj.name}
+          handleChangeUser={this.handleChangeUser} />
       </div>
     );
   }

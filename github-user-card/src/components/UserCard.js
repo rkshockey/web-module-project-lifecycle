@@ -12,7 +12,7 @@ function UserCard (props){
         <div className='user-card'>
             <img src={userObj.avatar_url} alt={userObj.name} />
                 <div className='user-details'>
-                <h3>{userObj.name}</h3>
+                <h3>{userObj.name ? userObj.name : userObj.login}</h3>
                 <p>{userObj.company ? userObj.company : 'No company'}, {userObj.location}</p>
                 <a href={userObj.html_url}>{userObj.login}</a>
                 <p>Hireable: {userObj.hireable ? 'Yes' : 'No'}</p>
