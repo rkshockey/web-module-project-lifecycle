@@ -1,6 +1,7 @@
 import './App.css';
 import UserCard from './components/UserCard';
 import FollowerList from './components/FollowerList';
+import SearchBar from './components/SearchBar';
 import React, { Component } from 'react'
 import axios from 'axios'
 
@@ -10,7 +11,8 @@ class App extends Component {
     userObj: {},
     followerArr: [],
     followingArr: [],
-    formValue: 'rkshockey'
+    formValue: 'rkshockey',
+    searchValue: ''
 }
 
   componentDidMount(){
@@ -61,10 +63,29 @@ class App extends Component {
     })
   }
 
+  handleSearch = (value) => {
+    this.handleChangeUser(`https://api.github.com/users/${value}`)
+    this.setState({
+      ...this.state,
+      searchValue: ''
+    })
+  }
+
+  handleChangeSearch = value => {
+    this.setState({
+      ...this.state,
+      searchValue: value
+    })
+  }
+
   render(){
     return (
       <div className="App">
         <h1>Github User Portfolio</h1>
+        <SearchBar
+          searchValue={this.state.searchValue}
+          handleSearch={this.handleSearch}
+          handleChangeSearch={this.handleChangeSearch} />
         <UserCard
           userObj={this.state.userObj}
           followingArr={this.state.followingArr} 
